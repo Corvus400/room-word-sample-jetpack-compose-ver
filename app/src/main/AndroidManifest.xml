@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomWordSample">
         <activity
+            android:name=".core.presentation.ui.NewWordActivity"
+            android:exported="false" />
+        <activity
             android:name=".core.presentation.ui.MainActivity"
             android:exported="true">
             <intent-filter>

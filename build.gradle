@@ -18,7 +18,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    kotlin_version = '1.6.10'
+    kotlinVersion = '1.6.10'
 
     activityVersion = '1.4.0'
     appCompatVersion = '1.2.0'
@@ -28,7 +28,7 @@ ext {
     lifecycleVersion = '2.2.0'
     materialVersion = '1.2.1'
     roomVersion = '2.4.0'
-    compose_version = '1.0.5'
+    composeVersion = '1.0.5'
     // testing
     junitVersion = '4.13.1'
     espressoVersion = '3.1.0'

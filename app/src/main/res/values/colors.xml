@@ -14,4 +14,6 @@
 
     <color name="buttonLabel">#FFFFFF</color>
 
+    <color name="holo_orange_light">#ffffbb33</color>
+
 </resources>

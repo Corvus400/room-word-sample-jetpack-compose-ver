@@ -1,4 +1,4 @@
-package com.example.roomwordsample.core.presentation.ui.items
+package com.example.roomwordsample.presentation.ui.items
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomwordsample.R
-import com.example.roomwordsample.core.domain.entity.Word
+import com.example.roomwordsample.domain.entity.Word
 
 class WordListAdapter : ListAdapter<Word, WordListAdapter.WordViewHolder>(WordsComparator()) {
 

@@ -1,8 +1,8 @@
-package com.example.roomwordsample.core.infrastructure.repository
+package com.example.roomwordsample.infrastructure.repository
 
 import androidx.annotation.WorkerThread
-import com.example.roomwordsample.core.domain.entity.Word
-import com.example.roomwordsample.core.infrastructure.database.dao.WordDao
+import com.example.roomwordsample.domain.entity.Word
+import com.example.roomwordsample.infrastructure.database.dao.WordDao
 import kotlinx.coroutines.flow.Flow
 
 class WordRepository(

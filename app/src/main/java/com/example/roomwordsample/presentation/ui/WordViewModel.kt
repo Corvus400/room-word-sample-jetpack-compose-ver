@@ -1,8 +1,8 @@
-package com.example.roomwordsample.core.presentation.ui
+package com.example.roomwordsample.presentation.ui
 
 import androidx.lifecycle.*
-import com.example.roomwordsample.core.domain.entity.Word
-import com.example.roomwordsample.core.infrastructure.repository.WordRepository
+import com.example.roomwordsample.domain.entity.Word
+import com.example.roomwordsample.infrastructure.repository.WordRepository
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 

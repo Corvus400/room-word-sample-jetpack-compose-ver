@@ -1,10 +1,10 @@
-package com.example.roomwordsample.core.infrastructure.database.dao
+package com.example.roomwordsample.infrastructure.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.roomwordsample.core.domain.entity.Word
+import com.example.roomwordsample.domain.entity.Word
 import kotlinx.coroutines.flow.Flow
 
 @Dao

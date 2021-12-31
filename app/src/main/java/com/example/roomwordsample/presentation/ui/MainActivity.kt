@@ -1,4 +1,4 @@
-package com.example.roomwordsample.core.presentation.ui
+package com.example.roomwordsample.presentation.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomwordsample.R
-import com.example.roomwordsample.core.app.WordsApplication
-import com.example.roomwordsample.core.domain.entity.Word
-import com.example.roomwordsample.core.presentation.ui.items.WordListAdapter
+import com.example.roomwordsample.app.WordsApplication
+import com.example.roomwordsample.domain.entity.Word
+import com.example.roomwordsample.presentation.ui.items.WordListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {

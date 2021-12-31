@@ -1,4 +1,4 @@
-package com.example.roomwordsample.core.presentation.ui
+package com.example.roomwordsample.presentation.ui
 
 import android.app.Activity
 import android.content.Intent

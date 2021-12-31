@@ -1,8 +1,8 @@
-package com.example.roomwordsample.core.app
+package com.example.roomwordsample.app
 
 import android.app.Application
-import com.example.roomwordsample.core.infrastructure.database.WordRoomDatabase
-import com.example.roomwordsample.core.infrastructure.repository.WordRepository
+import com.example.roomwordsample.infrastructure.database.WordRoomDatabase
+import com.example.roomwordsample.infrastructure.repository.WordRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 

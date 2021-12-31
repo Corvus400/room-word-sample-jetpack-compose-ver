@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.roomwordsample.core.domain.entity.Word
 import com.example.roomwordsample.core.infrastructure.database.dao.WordDao
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Database(
     entities = [Word::class],
@@ -20,17 +23,47 @@ public abstract class WordRoomDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: WordRoomDatabase? = null
 
-        fun getDatabase(context: Context): WordRoomDatabase {
+        fun getDatabase(
+            context: Context,
+            scope: CoroutineScope
+        ): WordRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WordRoomDatabase::class.java,
                     "word_database"
-                ).build()
+                )
+                    .addCallback(WordDatabaseCallback(scope))
+                    .build()
                 INSTANCE = instance
 
                 instance
             }
+        }
+    }
+
+    private class WordDatabaseCallback(
+        private val scope: CoroutineScope
+    ) : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+
+                }
+            }
+        }
+
+        suspend fun populateDatabase(wordDao: WordDao) {
+            wordDao.deleteAll()
+
+            var word = Word("Hello")
+            wordDao.insert(word)
+            word = Word("World!")
+            wordDao.insert(word)
+
+            word = Word("TODO!")
+            wordDao.insert(word)
         }
     }
 }

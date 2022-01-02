@@ -14,14 +14,14 @@ class NewWordViewModel(
     fun insert(word: Word) = viewModelScope.launch {
         repository.insert(word)
     }
+}
 
-    class NewWordViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(NewWordViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return NewWordViewModel(repository) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
+class NewWordViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(NewWordViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return NewWordViewModel(repository) as T
         }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

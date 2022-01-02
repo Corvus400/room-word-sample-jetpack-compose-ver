@@ -28,7 +28,7 @@ import com.example.roomwordsample.presentation.ui.theme.RoomWordTheme
 
 class NewWordActivity : ComponentActivity() {
     private val wordViewModel: NewWordViewModel by viewModels {
-        NewWordViewModel.NewWordViewModelFactory((application as WordsApplication).repository)
+        NewWordViewModelFactory((application as WordsApplication).repository)
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {

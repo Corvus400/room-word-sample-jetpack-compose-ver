@@ -25,14 +25,14 @@ import com.example.roomwordsample.presentation.ui.items.WordText
 import com.example.roomwordsample.presentation.ui.theme.RoomWordTheme
 
 class MainActivity : ComponentActivity() {
-    private val wordViewModel: WordViewModel by viewModels {
-        WordViewModelFactory((application as WordsApplication).repository)
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory((application as WordsApplication).repository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val words by wordViewModel.allWords.observeAsState()
+            val words by mainViewModel.allWords.observeAsState()
 
             RoomWordTheme {
                 MainScreen(

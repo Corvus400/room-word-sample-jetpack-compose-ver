@@ -8,17 +8,17 @@ import com.example.roomwordsample.domain.entity.Word
 import com.example.roomwordsample.infrastructure.repository.WordRepository
 
 
-class WordViewModel(
+class MainViewModel(
     private val repository: WordRepository
 ) : ViewModel() {
     val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
 }
 
-class WordViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {
+class MainViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(WordViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return WordViewModel(repository) as T
+            return MainViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

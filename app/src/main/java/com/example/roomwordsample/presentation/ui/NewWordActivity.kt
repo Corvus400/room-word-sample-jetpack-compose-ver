@@ -1,10 +1,9 @@
 package com.example.roomwordsample.presentation.ui
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,9 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roomwordsample.R
+import com.example.roomwordsample.app.WordsApplication
+import com.example.roomwordsample.domain.entity.Word
 import com.example.roomwordsample.presentation.ui.theme.RoomWordTheme
 
 class NewWordActivity : ComponentActivity() {
+    private val wordViewModel: NewWordViewModel by viewModels {
+        NewWordViewModel.NewWordViewModelFactory((application as WordsApplication).repository)
+    }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,22 +37,13 @@ class NewWordActivity : ComponentActivity() {
             RoomWordTheme {
                 NewWordScreen(
                     onClickSave = { text ->
-                        val replyIntent = Intent()
-                        if (text.isEmpty()) {
-                            setResult(Activity.RESULT_CANCELED, replyIntent)
-                        } else {
-                            replyIntent.putExtra(EXTRA_REPLY, text)
-                            setResult(Activity.RESULT_OK, replyIntent)
-                        }
+                        val word = Word(text)
+                        wordViewModel.insert(word)
                         finish()
                     }
                 )
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
     }
 
     @Composable

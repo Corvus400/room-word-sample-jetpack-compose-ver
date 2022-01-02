@@ -1,20 +1,17 @@
 package com.example.roomwordsample.presentation.ui
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import com.example.roomwordsample.domain.entity.Word
 import com.example.roomwordsample.infrastructure.repository.WordRepository
-import kotlinx.coroutines.launch
-import java.lang.IllegalArgumentException
 
 
 class WordViewModel(
     private val repository: WordRepository
 ) : ViewModel() {
     val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
-
-    fun insert(word: Word) = viewModelScope.launch {
-        repository.insert(word)
-    }
 }
 
 class WordViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {

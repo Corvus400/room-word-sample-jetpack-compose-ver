@@ -1,9 +1,7 @@
 package com.example.roomwordsample.presentation.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -27,7 +25,6 @@ import com.example.roomwordsample.presentation.ui.items.WordText
 import com.example.roomwordsample.presentation.ui.theme.RoomWordTheme
 
 class MainActivity : ComponentActivity() {
-    private val newWordActivityRequestCode = 1
     private val wordViewModel: WordViewModel by viewModels {
         WordViewModelFactory((application as WordsApplication).repository)
     }
@@ -41,28 +38,12 @@ class MainActivity : ComponentActivity() {
                 MainScreen(
                     words = words ?: listOf(),
                     onClickFab = {
-                        val intent = Intent(this@MainActivity, NewWordActivity::class.java)
-                        startActivityForResult(intent, newWordActivityRequestCode)
+                        startActivity(
+                            Intent(this@MainActivity, NewWordActivity::class.java)
+                        )
                     }
                 )
             }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let {
-                val word = Word(it)
-                wordViewModel.insert(word)
-            }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG
-            ).show()
         }
     }
 
